@@ -7,12 +7,12 @@ $(document).ready( function () {
 $(document).onload(function isConnected (req,res){
     $.ajax({
         type:"GET",
-        url :"http://administration.restologue.bwb",
-        dataType :'',
+        url :"api.users.bwb",
+        dataType :'json',
         success : {
-            (data);
+            ;
         },
-        error : function(){
+        error : 
             window.location.href("http://connexion.html");
         }
     });
@@ -20,7 +20,11 @@ $(document).onload(function isConnected (req,res){
 
 var isConnected = false;
 function isConnected (){
-    (while isConnected){
+    if (connected.val()===true){
+        isConnected = true;
         
     }
 }
+
+
+$("#modifier").click(function)
