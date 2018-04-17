@@ -5,7 +5,7 @@ $(document).ready(function () {
      
         $.ajax({
             
-            url: "http://julian.bwb:3000/cartes/get",
+            url: "http://192.168.1.50:3000/cartes/get",
             dataType: "json",
             success : function(data){
                 loaddata(data);
@@ -21,7 +21,7 @@ function loaddata(listeDeCarte){
     for(var i = 0 ; i < listeDeCarte.length ; i++){
         var carte = listeDeCarte[i];
         var menu = listeDeCarte[i].listeDeMenu;
-        var id_carte = "del("+ carte.id + ");";
+        var id_carte = "aPlusSousLBus("+ carte.id + ");";
         var update = "update("+ carte.id + ");";
 
 
@@ -74,7 +74,7 @@ function get(id){
 
     $.ajax({
         type: "GET",
-        url : "http://julian.bwb:3000/cartes/" + id + "/get",
+        url : "http://192.168.1.50:3000/cartes/" + id + "/get",
         
         
         success : function(data){
@@ -108,7 +108,7 @@ $(document).ready(function () {
    
     $.ajax({
         type: "GET",
-        url : "http://moi.bwb:3000/verify",
+        url : "http://192.168.1.50:3000/verify",
         dataType : 'json',
         
         success : function(data){
@@ -124,10 +124,25 @@ $(document).ready(function () {
 
 function isConnected(users){
     if(users.connected){
-        return true
+        return true;
         alert('GG ¯\\_(ツ)_/¯');
     }else{
-        window.location.href = "connexion.html"
-        return false
+        window.location.href = "connexion.html";
+        return false;
     }
 }
+
+
+function aPlusSousLBus(id){
+$.ajax({
+        type: "POST",
+        url : "http://192.168.1.50:3000/cartes/" + id +"/remove",
+        
+        
+        success : alert("la carte a bien été supprimée"),
+                  /* maj vue à rajouter */
+        error : function(param1, param2){
+            alert('OUPS ¯\\_(ツ)_/¯');
+        }
+        });
+        }
