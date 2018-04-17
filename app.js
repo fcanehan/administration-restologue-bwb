@@ -1,30 +1,133 @@
-$(document).ready( function () {
-    $('#myTable').DataTable();
+$(document).ready(function () {
+    
+   
+
+     
+        $.ajax({
+            
+            url: "http://julian.bwb:3000/cartes/get",
+            dataType: "json",
+            success : function(data){
+                loaddata(data);
+                console.log(data);
+            },
+            error : function(param1, param2){
+                alert("¯\\_(ツ)_/¯");
+            }
+        }); 
+            
+
+function loaddata(listeDeCarte){
+    for(var i = 0 ; i < listeDeCarte.length ; i++){
+        var carte = listeDeCarte[i];
+        var menu = listeDeCarte[i].listeDeMenu;
+        var id_carte = "del("+ carte.id + ");";
+        var update = "update("+ carte.id + ");";
+
+
+
+        $("#yolo").append(
+            $('<tr>')
+            .append($("<td>").text(carte.id))
+            .append($("<td>").text(carte.titre))
+            .append($("<td>").append($("<button>").addClass("btn btn-warning").attr("onclick", update).text("Mettre a jour")).append($("<button>").addClass("btn btn-danger").attr("onclick", id_carte).text("Supprimer")))
+            );
+    }
+}
+     
+
+//     $('#tableMenu tbody').on( 'click', 'button', function () {
+//         var data = table.row( $(this).parents('tr') ).data();
+//         alert( "ID = " + data[0] );
+//         var monid = data[0];
+//     } );
+
+//     var table = $('#tableMenu').DataTable( 
+//         {
+            
+//             "ajax" : {
+//                 url: 'http://julian.bwb:3000/cartes/get',
+//                 dataSrc: 'data',
+//             },
+//         "responsive": true,   
+//         "columnDefs": [ {
+//             "targets": -1,
+//             "data": null,
+//             "defaultContent": "<button class=\"btn btn-warning\" id=\"update\">Update!</button> <button class=\"btn btn-danger\">Delete!</button>"
+//         } ]       
+//         }
+//  );
+
+    $('#tableMenu').DataTable( {
+
+    } );
 } );
 
 
 
-$(document).onload(function isConnected (req,res){
-    $.ajax({
-        type:"GET",
-        url :"api.users.bwb",
-        dataType :'json',
-        success : {
-            ;
-        },
-        error : 
-            window.location.href("http://connexion.html");
-        }
-    });
-});
 
-var isConnected = false;
-function isConnected (){
-    if (connected.val()===true){
-        isConnected = true;
+
+// Function get - Get id pour les réstituer dans les value dans le form
+function get(id){
+
+
+
+    $.ajax({
+        type: "GET",
+        url : "http://julian.bwb:3000/cartes/" + id + "/get",
         
-    }
+        
+        success : function(data){
+            var datatable = data;
+            console.log(datatable);
+        },
+        error : function(param1, param2){
+            alert('OUPS ¯\\_(ツ)_/¯');
+        }
+
+    });
+
+
 }
 
+// Function add - Ajoute un menu, les entées plats dessert et leur prix
+function add(){
 
-$("#modifier").click(function)
+}
+
+//Function update - Met a jours les données d'un menu
+function update(id){
+    
+}
+// Dunction 
+function del(id){
+
+}
+
+$(document).ready(function () {
+   
+    $.ajax({
+        type: "GET",
+        url : "http://moi.bwb:3000/verify",
+        dataType : 'json',
+        
+        success : function(data){
+            isConnected(data);
+        },
+        error : function(param1, param2){
+            alert('L\'authentification à échoué ¯\\_(ツ)_/¯');
+        }
+
+    });
+    
+});
+
+function isConnected(users){
+    if(users.connected){
+        return true
+        alert('GG ¯\\_(ツ)_/¯');
+    }else{
+        window.location.href = "connexion.html"
+        return false
+    }
+}
