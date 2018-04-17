@@ -5,7 +5,7 @@
         <title>Restologue</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        
         <link href="menustyle.css" rel="stylesheet" type="text/css"/>
     
     </head>
@@ -39,13 +39,15 @@
                 <fieldset>
 
                     <!-- Form Name -->
-                    <legend id="majListe">MAJ liste</legend>
-                        <div class="container"
+                    <legend id="majListe"><h3>MAJ liste</h3></legend>
+                        <div class="container boxleft">
+     <!-- div gauche -->  
+                        
                     <!-- Text input-->
                             <div class="form-row">
-                                <div class="form-group col-md-6 ">
+                                <div class="form-group col-md-6 form-horizontal">
                                   <label class="control-label" for="textinput">ID</label>  
-                                  <div class="col-md-4">
+                                  <div class="col-md-6">
                                   <input id="textinput" name="textinput" type="text" placeholder="id du menu" class="form-control input-md"readonly>
 
                                   </div>
@@ -55,45 +57,50 @@
                                 <!-- Text input-->
                                 <div class="form-group col-md-6">
                                   <label class=" control-label" for="textinput">Titre</label>  
-                                  <div class="col-md-4">
+                                  <div class="col-md-6">
                                   <input id="textinput" name="textinput" type="text" placeholder="titre du menu" class="form-control input-md" required="">
 
                                   </div>
                                 </div>
+                                                    <div class="form-group">
+                      <label class="col-md-6 control-label" for="realisateur">prix</label>  
+                      <div class="col-md-6">
+                      <input id="textinput" name="textinput" type="text" placeholder="prix" class="form-control input-md">
+
+                      </div>
+                    </div>
                             </div>
-                    <!-- Text input-->
+                    
+
+                </div>    
+<!-- div droite-->
+                <div class="container boxright">
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">Entree</label>  
-                      <div class="col-md-4">
+                      <label class="col-md-6 control-label" for="textinput">Entree</label>  
+                      <div class="col-md-6">
                       <input id="textinput" name="textinput" type="text" placeholder="entree" class="form-control input-md">
 
                       </div>
                     </div>
-
+                    
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">Plat</label>  
-                      <div class="col-md-4">
+                      <label class="col-md-6 control-label" for="textinput">Plat</label>  
+                      <div class="col-md-6">
                       <input id="textinput" name="textinput" type="text" placeholder="plat" class="form-control input-md">
 
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">Dessert</label>  
-                      <div class="col-md-4">
+                      <label class="col-md-6 control-label" for="textinput">Dessert</label>  
+                      <div class="col-md-6">
                       <input id="textinput" name="textinput" type="text" placeholder="dessert" class="form-control input-md">
 
                       </div>
                     </div>
                     <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="realisateur">prix</label>  
-                      <div class="col-md-4">
-                      <input id="textinput" name="textinput" type="text" placeholder="prix" class="form-control input-md">
 
-                      </div>
-                    </div>
-
+                </div>
                     
 
                     <!-- Button (Double) -->
@@ -105,7 +112,7 @@
                       </div>
                     </div>
 
-    </fieldset>
+        </fieldset>
     </form>
 </div>    
             

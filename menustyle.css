@@ -1,7 +1,25 @@
-h1 {
+h1, h3{
     text-align: center;
 }
 
 .bloctitre{
     margin : 40px 0px;
+}
+
+.form-group{
+    height: 60px;
+}
+
+.boxleft{
+    display: inline-block  ;
+
+}
+
+.boxright{
+    display: inline-block;
+
+}
+
+body{
+    
 }
