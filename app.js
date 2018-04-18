@@ -105,8 +105,7 @@ function del(id){
 }
 
 $(document).ready(function () {
-   
-    $.ajax({
+       $.ajax({
         type: "GET",
         url : "http://192.168.1.46:3000/verify",
         dataType : 'json',
@@ -117,9 +116,7 @@ $(document).ready(function () {
         error : function(param1, param2){
             alert('L\'authentification à échoué ¯\\_(ツ)_/¯');
         }
-
     });
-    
 });
 
 function isConnected(users){
@@ -141,7 +138,7 @@ function aPlusSousLBus(id){
         
         success : function(resultat, statut){
                 alert("la carte a bien été supprimée"),
-                  climatiseur("#content");
+                  climatiseur("body");
               },
         error : function(param1, param2){
             alert('OUPS ¯\\_(ツ)_/¯');
@@ -154,11 +151,46 @@ function climatiseur(div){
 }
 
 
-//function ajoutMenu (){
-//    $.ajax({
-//        
-//        type : "POST",
-//        url : "http://192.168.1.50:3000/cartes/",   
-//        
-//    })
-//}
+// Function add - Ajoute un menu, les entées plats dessert et leur prix
+function add(){
+    var coucou =  new Date().getTime();
+    event.preventDefault();
+
+    var menu = [ {
+        id : coucou,
+        titre : "random",
+        entree:{
+            nom: $("#entreeInput").val(),
+            prix:$("#entreePrix").val()
+        },
+        plat:{
+            nom:$("#platInput").val(),
+            prix:$("#platPrix").val()
+        },
+        dessert:{
+            nom:$("#dessertInput").val(),
+            prix: $("#dessertPrix").val()
+        }         
+    }];
+
+    var carte = {
+        titre : $("#titreIinput").val(),
+        listeDeMenu : menu
+    };
+ 
+    console.log(carte);
+
+    $.ajax({
+        type: "POST",
+        url: "http://192.168.1.50:3000/cartes/add",
+        dataType: "json",
+        data: carte,
+        success: function(data){
+            alert("GG !" );
+            climatiseur("body");
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+  });
+}
