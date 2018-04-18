@@ -14,12 +14,12 @@ function login(){
         connected : true
     };
 
-    console.log(users)
+    console.log(users);
 
     $.ajax({
         type: "POST",
         dataType : 'json',
-        url : "http://moi.bwb:3000/connected",
+        url : "http://192.168.1.46:3000/connected",
         data : users,
         success : function(retour){
             window.location.href = "index.html";

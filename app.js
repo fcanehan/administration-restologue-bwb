@@ -108,7 +108,7 @@ $(document).ready(function () {
    
     $.ajax({
         type: "GET",
-        url : "http://192.168.1.50:3000/verify",
+        url : "http://192.168.1.46:3000/verify",
         dataType : 'json',
         
         success : function(data){
@@ -139,19 +139,26 @@ function aPlusSousLBus(id){
         url : "http://192.168.1.50:3000/cartes/" + id +"/remove",
         
         
-        success : alert("la carte a bien été supprimée"),
-                  /* maj vue à rajouter */
+        success : function(resultat, statut){
+                alert("la carte a bien été supprimée"),
+                  climatiseur("#content");
+              },
         error : function(param1, param2){
             alert('OUPS ¯\\_(ツ)_/¯');
         }
     });
 }
 
-function ajoutMenu (){
-    $.ajax({
-        
-        type : "POST",
-        url : "http://192.168.1.50:3000/cartes/",
-        
-    })
+function climatiseur(div){ 
+    $(div).load(window.location.href);
 }
+
+
+//function ajoutMenu (){
+//    $.ajax({
+//        
+//        type : "POST",
+//        url : "http://192.168.1.50:3000/cartes/",   
+//        
+//    })
+//}
