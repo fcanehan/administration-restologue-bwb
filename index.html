@@ -7,17 +7,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        <link rel="stylesheet" href="menustyle.css">
+        <link rel="stylesheet" href="menu.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
     </head>
     <body>
         
-        <!-- header -->
-        <div class="container bloctitre">
-            <div id="header" class="header">
-                <h1 class="title">Gestion des Menus</h1>
+        <nav class="navbar navbar-fixed-top navbar-expand-md navbar-dark bg-primary">
+            <div class="d-flex w-100">
+                <a class="navbar-brand mr-0" href="#">YaFaJu</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
-        </div>    
+            <div class="navbar-collapse collapse justify-content-center" id="collapsingNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Link <span class="sr-only">Home</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="//codeply.com">Codeply</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div>
+            <span class="navbar-text small text-truncate mt-1 w-100 text-right">SLOGANT</span>
+        </nav>
+
+        <br>
+        <h1 class="text-center">Gestion des Menus</h1>
         <!-- end header--> 
         
         
@@ -27,9 +46,6 @@
         <div class="container" id="content">
 
                 <table id="tableMenu" class="display">
-                        <tlegend>
-                                <h1>Menu Restologue</h1>
-                            </tlegend>
                             <thead>
                                     <tr>
                                         <th>
@@ -38,18 +54,6 @@
                                         <th>
                                             Titre
                                         </th>
-                                        <!-- <th>
-                                            Entrées
-                                        </th>
-                                        <th>
-                                            Plats
-                                        </th>
-                                        <th>
-                                            Desserts
-                                        </th>
-                                        <th>
-                                            Prix
-                                        </th> -->
                                         <th>
                                             Actions
                                         </th>
@@ -58,17 +62,11 @@
                                 <tbody id="yolo">
                                   
                                         <tr>
-                                                <td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                                     
-                                                </td>
-                                                <td>
-                                                    
-                                                </td>
-                                                <td>
-                                                    
-                                                    </td>
-                                                    
-                                            </tr>
+                                        </tr>
                                    
                                 </tbody>
                     </table>
@@ -89,9 +87,10 @@
                         
                     <!-- Text input-->
                             <div class="form-row">
-                                <div class="form-group col-md-6 form-horizontal">
+                                <div class="form-group col-md-6">
+                                        <div class="col-md-6">
                                   <label class="control-label" for="idInput">ID</label>  
-                                  <div class="col-md-6">
+                                  
                                   <input id="idInput" name="textinput" type="text" placeholder="id du menu" class="form-control input-md" readonly>
 
                                   </div>
@@ -109,7 +108,7 @@
                                 </div>
                                   <div class="form-group">
                                     <label class="col-md-4 control-label" for="entreePrix">Prix</label>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                       <div class="input-group">
                                         <input id="entreePrix" name="appendedtext" class="form-control" placeholder="100000 €" type="text" required="">
                                       </div>
@@ -119,7 +118,7 @@
 
                                   <div class="form-group">
                                     <label class="col-md-4 control-label" for="platPrix">Prix</label>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                       <div class="input-group">
                                         <input id="platPrix" name="appendedtext" class="form-control" placeholder="100000 €" type="text" required="">
                                       </div>
@@ -129,7 +128,7 @@
 
                                   <div class="form-group">
                                     <label class="col-md-4 control-label" for="dessertPrix">Prix</label>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                       <div class="input-group">
                                         <input id="dessertPrix" name="appendedtext" class="form-control" placeholder="100000 €" type="text" required="">
                                       </div>
@@ -170,15 +169,19 @@
                     <!-- Text input-->
 
                 </div>
-                    
+                    <br><br>
 
+
+                    <div class="row ">
+                            <div class="col-sm-12 text-center">
+                                    <button id="modifier" name="modifier" class="btn btn-success btn-lg" onclick="update(2);">valider</button>
+                                    <button id="ajouter" name="ajouter" class="btn btn-info btn-lg" onclick="add();">ajouter</button>
+                             </div>
+                        </div>
+
+                   
                     <!-- Button (Double) -->
-                    <div class="form-group" >
-                      <div class="col-md-8">
-                        <button id="modifier" name="modifier" class="btn btn-success" onclick="">valider</button>
-                        <button id="ajouter" name="ajouter" class="btn btn-info" onclick="add();">ajouter</button>
-                      </div>
-                    </div>
+   
 
         </fieldset>
     </form>
@@ -186,8 +189,12 @@
 </div>    
             
             <!-- fin formulaire -->
-            
-                   
+            <hr>
+            <footer class="footer">
+                <div class="container">
+                  <span class="text-muted">YaFaJu best team ever</span>
+                </div>
+              </footer>                
     </body>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>

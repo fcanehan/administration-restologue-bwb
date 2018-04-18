@@ -25,7 +25,7 @@ function loaddata(listeDeCarte){
         var update = "get("+ carte.id + ");";
 
 
-
+d
         $("#yolo").append(
             $('<tr>')
             .append($("<td>").text(carte.id))
@@ -87,20 +87,6 @@ function get(id){
 
     });
 
-
-}
-
-// Function add - Ajoute un menu, les entées plats dessert et leur prix
-function add(){
-
-}
-
-//Function update - Met a jours les données d'un menu
-function update(id){
-    
-}
-// Dunction 
-function del(id){
 
 }
 
@@ -265,4 +251,43 @@ function get(id){
     getCarte(id);
     getMenu(id);
 
+}
+//Function update - Met a jours les données d'un menu
+function update(id){  
+     console.log("hey");
+        
+     $.ajax({
+        type: "POST",
+        url : "http://192.168.1.50:3000/cartes/menus" + id + "/update",
+        dataType: "json",
+        data: carte,
+        success: function(data){
+            alert("c'est maj hic!");
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
+         
+     var menu = [ {
+        titre : "random",
+        entres:{
+            nom: $("#entreeInput").val(),
+            prix:$("#entreePrix").val()
+        },
+        plat:{
+            nom:$("#platInput").val(),
+            prix:$("#platPrix").val()
+        },
+        dessert:{
+            nom:$("#dessertInput").val(),
+            prix: $("#dessertPrix").val()
+        }     
+    }];
+    
+    var carte = {
+        id : $("#idInput").val(),
+        titre : $("#titreIinput").val(),
+        listeDeMenu : menu
+    };
 }
