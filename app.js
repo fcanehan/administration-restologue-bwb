@@ -134,7 +134,7 @@ function isConnected(users){
 
 
 function aPlusSousLBus(id){
-$.ajax({
+    $.ajax({
         type: "POST",
         url : "http://192.168.1.50:3000/cartes/" + id +"/remove",
         
@@ -144,5 +144,14 @@ $.ajax({
         error : function(param1, param2){
             alert('OUPS ¯\\_(ツ)_/¯');
         }
-        });
-        }
+    });
+}
+
+function ajoutMenu (){
+    $.ajax({
+        
+        type : "POST",
+        url : "http://192.168.1.50:3000/cartes/",
+        
+    })
+}
