@@ -22,7 +22,7 @@ function loaddata(listeDeCarte){
         var carte = listeDeCarte[i];
         var menu = listeDeCarte[i].listeDeMenu;
         var id_carte = "aPlusSousLBus("+ carte.id + ");";
-        var update = "update("+ carte.id + ");";
+        var update = "get("+ carte.id + ");";
 
 
 
@@ -151,15 +151,17 @@ function climatiseur(div){
 }
 
 
-// Function add - Ajoute un menu, les entées plats dessert et leur prix
 function add(){
-    var coucou =  new Date().getTime();
+    function getRandomInt(max) {
+        return Math.    floor(Math.random() * Math.floor(max));
+      }
+    coucou =  getRandomInt(100);
     event.preventDefault();
 
     var menu = [ {
-        id : coucou,
+        id : 0,
         titre : "random",
-        entree:{
+        entres:{
             nom: $("#entreeInput").val(),
             prix:$("#entreePrix").val()
         },
@@ -170,14 +172,19 @@ function add(){
         dessert:{
             nom:$("#dessertInput").val(),
             prix: $("#dessertPrix").val()
-        }         
-    }];
+        } 
 
+        
+    }];
     var carte = {
+        id : 0,
         titre : $("#titreIinput").val(),
         listeDeMenu : menu
+        
     };
- 
+
+
+
     console.log(carte);
 
     $.ajax({
@@ -186,11 +193,76 @@ function add(){
         dataType: "json",
         data: carte,
         success: function(data){
-            alert("GG !" );
+            alert(data);
             climatiseur("body");
         },
         failure: function(errMsg) {
             alert(errMsg);
         }
   });
+    
+
+}
+
+function get(id){
+
+    function getCarte(id){
+    
+        $.ajax({
+            type: "GET",
+            url : "http://192.168.1.50:3000/cartes/" + id + "/get",
+                      
+            success : function(data){
+            loadd(data);
+            },
+            error : function(param1, param2){
+                alert('OUPS ¯\\_(ツ)_/¯');
+            }
+    
+    
+        });
+    
+        function loadd(data){
+    
+            document.getElementById("idInput").value = data.id
+            document.getElementById("titreIinput").value = data.titre
+    
+        }
+    }
+    
+    function getMenu(id){
+        
+        $.ajax({
+            type: "GET",
+            url : "http://192.168.1.50:3000/cartes/" + id + "/menus/get",
+                      
+            success : function(data){
+            loadd(data);
+            //console.log(data[0]);
+            },
+            error : function(param1, param2){
+                alert('OUPS ¯\\_(ツ)_/¯');
+            }
+    
+        });
+    
+        function loadd(data){
+
+    
+            /* VALUE INPUT NOM */
+            document.getElementById("entreeInput").value = data[0]["entres"]["nom"]
+            document.getElementById("platInput").value = data[0]["plat"]["nom"]
+            document.getElementById("dessertInput").value = data[0]["dessert"]["nom"]
+    
+            /* VALUE INPUT PRIX */
+            document.getElementById("entreePrix").value = data[0]["entres"]["prix"]
+            document.getElementById("platPrix").value = data[0]["plat"]["prix"]
+            document.getElementById("dessertPrix").value = data[0]["dessert"]["prix"]
+    
+        }
+    }
+
+    getCarte(id);
+    getMenu(id);
+
 }
